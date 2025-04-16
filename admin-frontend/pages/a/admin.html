@@ -4,8 +4,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
-	
-	
+
+
 	<!-- 第三方 -->
 	<!-- <link rel="stylesheet" href="../../libs/element-ui/index.css"> -->
 	<!-- <link rel="stylesheet" href="../../libs/element-2.15.13/index.css"> -->
@@ -13,18 +13,18 @@
 	<!-- <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.13/lib/theme-chalk/index.css"> -->
 	<!-- <link rel="stylesheet" href="../../libs/cherry-markdown/dist/cherry-markdown.css"> -->
 	<!-- <link rel="stylesheet" href="https://unpkg.com/cherry-markdown@0.8.40/dist/cherry-markdown.min.css"> -->
-	
+
 	<link rel="stylesheet" type="text/css" href="../../css/app.css" />
 	<link rel="stylesheet" type="text/css" href="../../css/style.css" />
-	<link rel="stylesheet" type="text/css" href="../../css/admin/mng.css"/>
-	
+	<link rel="stylesheet" type="text/css" href="../../css/admin/mng.css" />
+
 
 	<style type="text/css">
 	</style>
 
 	<link rel="shortcut icon" href="../../img/logo/itzixi.ico" type="image/x-icon">
 
-	<title>风间影月 · 管理中心&综合管理平台</title>
+	<title>管理后台</title>
 </head>
 
 <body>
@@ -33,10 +33,9 @@
 		<el-container class="dashboard-in-one">
 			<el-aside width="200px" class="menu-container">
 				<div class="logo-box">
-					<!-- 1781 × 662 -->
-					<img src="../../img/logo/fjyy-logo.png" height="50px" width="134px" class="itzixi-logo"/>
+					<span style="font-size: 20px; font-weight: bold;">AI面试官管理后台</span>
 				</div>
-				
+
 				<!-- <el-menu
 					class=""
 					@open="handleOpen"
@@ -68,7 +67,8 @@
 				<el-menu @select="handleSelect" :default-active="activeMenu" ref="leeMenu">
 					<div v-for="item in menuList" :key="item.path">
 						<span v-show="item.role == currentRole">
-							<el-menu-item v-if="item.children.length === 0" :index="item.index" @click="saveRoutePath(item.index)">
+							<el-menu-item v-if="item.children.length === 0" :index="item.index"
+								@click="saveRoutePath(item.index)">
 								<i :class="item.icon"></i>
 								<span slot="title">{{item.title}}</span>
 							</el-menu-item>
@@ -79,7 +79,8 @@
 								</template>
 								<el-menu-item-group>
 									<div v-for="item1 in item.children" :key="item1.path">
-										<el-menu-item v-if="item1.children.length === 0" :index="item1.index" @click="saveRoutePath(item1.index)">
+										<el-menu-item v-if="item1.children.length === 0" :index="item1.index"
+											@click="saveRoutePath(item1.index)">
 											<i :class="item1.icon"></i>
 											<span slot="title">{{item1.title}}</span>
 										</el-menu-item>
@@ -90,24 +91,28 @@
 											</template>
 											<el-menu-item-group>
 												<div v-for="item2 in item1.children" :key="item2.path">
-												<el-menu-item v-if="item2.children.length === 0" :index="item2.index" @click="saveRoutePath(item2.index)">
-													<i :class="item2.icon"></i>
-													<span slot="title">{{item2.title}}</span>
-												</el-menu-item>
-												<el-submenu v-else :index="item2.index" @click="saveRoutePath(item2.index)">
-													<template slot="title">
+													<el-menu-item v-if="item2.children.length === 0"
+														:index="item2.index" @click="saveRoutePath(item2.index)">
 														<i :class="item2.icon"></i>
 														<span slot="title">{{item2.title}}</span>
-													</template>
-													<el-menu-item-group>
-													<div v-for="item3 in item2.children" :key="item3.path">
-														<el-menu-item v-if="item3.children.length === 0" :index="item3.index" @click="saveRoutePath(item3.index)">
-															<i :class="item3.icon"></i>
-															<span slot="title">{{item3.title}}</span>
-														</el-menu-item>
-													</div>
-													</el-menu-item-group>
-												</el-submenu>
+													</el-menu-item>
+													<el-submenu v-else :index="item2.index"
+														@click="saveRoutePath(item2.index)">
+														<template slot="title">
+															<i :class="item2.icon"></i>
+															<span slot="title">{{item2.title}}</span>
+														</template>
+														<el-menu-item-group>
+															<div v-for="item3 in item2.children" :key="item3.path">
+																<el-menu-item v-if="item3.children.length === 0"
+																	:index="item3.index"
+																	@click="saveRoutePath(item3.index)">
+																	<i :class="item3.icon"></i>
+																	<span slot="title">{{item3.title}}</span>
+																</el-menu-item>
+															</div>
+														</el-menu-item-group>
+													</el-submenu>
 												</div>
 											</el-menu-item-group>
 										</el-submenu>
@@ -125,9 +130,9 @@
 					<div class="header-box">
 					</div>
 
-				</el-header>	
+				</el-header>
 				<el-main class="main-container">
-					
+
 					<!-- 路由出口 -->
 					<!-- 路由匹配到的组件将渲染在这里 -->
 					<transition mode="out-in">
@@ -138,7 +143,7 @@
 					<!-- <router-link to="/login">登陆</router-link>
 					<router-link to="/register">注册</router-link>
 					<router-link to="/register">外部引入</router-link> -->
-					
+
 					<!-- <my-component></my-component> -->
 				</el-main>
 			</el-container>
@@ -200,8 +205,8 @@
 		el: "#dashboardPage",
 		components: {
 			// 'my-component': httpVueLoader('my-component.vue')
-        },
-		router: router, 
+		},
+		router: router,
 		data() {
 			return {
 				// currentRole: 1,
@@ -210,7 +215,7 @@
 
 				activeMenu: "dashboard",
 
-				isCollapse : true,
+				isCollapse: true,
 				routerList: [],
 				menuList: [
 					// { title: '控制面板', path: '/dashboard', index: 'dashboard', component: dashboard, icon: 'el-icon-data-line', children: [] },
@@ -226,11 +231,11 @@
 				],
 			}
 		},
-		created() { 
+		created() {
 			var me = this;
 			// 通过cookie判断用户是否登录
 			// app.judgeUserLoginStatus(me);
-			
+
 			// 从引入的外部router.js中赋值menuList
 			// console.log(myrouter.menuList);
 			this.menuList = myrouter.menuList;
@@ -248,7 +253,7 @@
 				this.activeMenu = routePath;
 				// sessionStorage.setItem("path", null);
 			}
-			
+
 			// var userInfo = cookieUtils.getUserInfo();
 			// var userToken = cookieUtils.getToken();
 			// this.userInfo = userInfo;
@@ -298,7 +303,7 @@
 				console.log("fatherMethod index = " + index);
 				this.saveRoutePath(index);
 				this.activeMenu = index;
-			}, 
+			},
 
 			// changeActiveMenu(targetIndex) {
 			// 	// console.log("targetIndex = " + targetIndex);
@@ -317,7 +322,7 @@
 			// 设置路由列表
 			setRouterList(menuList) {
 				menuList.forEach(item => {
-					if(item.children.length === 0) {
+					if (item.children.length === 0) {
 						this.routerList[item.index] = item.path;
 					} else {
 						this.setRouterList(item.children);
@@ -342,7 +347,7 @@
 					path = "/" + keyPath[0] + "/" + keyPath[1];
 				}
 				// console.log(path);
-				this.$router.push({path: path});
+				this.$router.push({ path: path });
 			},
 
 
