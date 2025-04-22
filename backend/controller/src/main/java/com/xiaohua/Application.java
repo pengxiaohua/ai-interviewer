@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
     public static void main(String[] args) {
         System.out.println("hello world");
+        System.setProperty("pagehelper.banner", "false");
         SpringApplication.run(Application.class, args);
     }
 }
