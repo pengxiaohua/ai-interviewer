@@ -11,6 +11,7 @@ import com.xiaohua.grace.result.GraceJSONResult;
 import com.xiaohua.pojo.bo.InterviewerBO;
 import com.xiaohua.service.InterviewerService;
 import jakarta.annotation.Resource;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ public class InterviewerController {
      * @return
      */
     @PostMapping("createOrUpdate")
-    public GraceJSONResult createOrUpdate(@RequestBody InterviewerBO interviewerBO) {
+    public GraceJSONResult createOrUpdate(@Valid @RequestBody InterviewerBO interviewerBO) {
         interviewerService.createOrUpdate(interviewerBO);
         return GraceJSONResult.ok();
     }
