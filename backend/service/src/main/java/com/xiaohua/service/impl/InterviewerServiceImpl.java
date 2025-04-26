@@ -7,6 +7,7 @@
 
 package com.xiaohua.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.fasterxml.jackson.databind.util.BeanUtil;
 import org.apache.commons.lang3.StringUtils;
 import com.xiaohua.mapper.InterviewerMapper;
@@ -42,14 +43,16 @@ public class InterviewerServiceImpl implements InterviewerService {
     @Override
     public List<Interviewer> queryAll() {
         // 调用Mapper层的查询方法，返回所有记录
-        return interviewerMapper.selectList(null);
+        return interviewerMapper.selectList(
+                new QueryWrapper<Interviewer>().orderByDesc("updated_time")
+        );
     }
 
     @Override
-    public void delete(String id) {
-        if (StringUtils.isBlank(id)) {
-            throw new IllegalArgumentException("ID不能为空");
+    public void delete(String interviewerId) {
+        if (StringUtils.isBlank(interviewerId)) {
+            throw new IllegalArgumentException("面试官ID不能为空");
         }
-        interviewerMapper.deleteById(id);
+        interviewerMapper.deleteById(interviewerId);
     }
 }

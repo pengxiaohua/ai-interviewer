@@ -39,4 +39,15 @@ public class InterviewerController {
     public GraceJSONResult list() {
         return GraceJSONResult.ok(interviewerService.queryAll());
     }
+
+    /**
+     * 删除面试官
+     * @param interviewerId
+     * @return
+     */
+    @DeleteMapping("delete")
+    public GraceJSONResult delete(@RequestParam String interviewerId) {
+        interviewerService.delete(interviewerId);
+        return GraceJSONResult.ok();
+    }
 }
