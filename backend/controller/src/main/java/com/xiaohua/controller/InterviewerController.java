@@ -12,10 +12,7 @@ import com.xiaohua.pojo.bo.InterviewerBO;
 import com.xiaohua.service.InterviewerService;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("interviewer")
@@ -31,5 +28,15 @@ public class InterviewerController {
     public GraceJSONResult createOrUpdate(@Valid @RequestBody InterviewerBO interviewerBO) {
         interviewerService.createOrUpdate(interviewerBO);
         return GraceJSONResult.ok();
+    }
+
+    /**
+     * 获取面试官列表
+     * @param
+     * @return GraceJSONResult
+     */
+    @GetMapping("list")
+    public GraceJSONResult list() {
+        return GraceJSONResult.ok(interviewerService.queryAll());
     }
 }
